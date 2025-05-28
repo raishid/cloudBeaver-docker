@@ -1,0 +1,17 @@
+services:
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest # O especifica una versión, ej: dbeaver/cloudbeaver:23.3.0
+    container_name: cloudbeaver
+    restart: unless-stopped
+    ports:
+      - "${PORT}:8978" # Puerto en el host : Puerto en el contenedor. Puedes cambiar el puerto del host si el 8978 está ocupado.
+    volumes:
+      - cloudbeaver_workspace:/opt/cloudbeaver/workspace
+    environment:
+      # Opcional: Habilitar el modo de desarrollo (no recomendado para producción)
+      - CB_SERVER_DEV_MODE: ${CB_SERVER_DEV_MODE:-false} # Cambia a true si necesitas el modo de desarrollo
+      # Opcional: Establecer la zona horaria
+      - TZ: ${TZ} # Ajusta a tu zona horaria
+volumes:
+  cloudbeaver_workspace:
+    driver: local
