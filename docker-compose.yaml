@@ -9,9 +9,9 @@ services:
       - cloudbeaver_workspace:/opt/cloudbeaver/workspace
     environment:
       # Opcional: Habilitar el modo de desarrollo (no recomendado para producción)
-      - CB_SERVER_DEV_MODE: ${CB_SERVER_DEV_MODE:-false} # Cambia a true si necesitas el modo de desarrollo
+      - CB_SERVER_DEV_MODE=${CB_SERVER_DEV_MODE:-false} # Cambia a true si necesitas el modo de desarrollo
       # Opcional: Establecer la zona horaria
-      - TZ: ${TZ} # Ajusta a tu zona horaria
+      - TZ=${TZ} # Ajusta a tu zona horaria
 volumes:
   cloudbeaver_workspace:
     driver: local
